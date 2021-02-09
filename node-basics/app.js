@@ -1,50 +1,50 @@
 
-// const logger= require('./logger')
+const logger= require('./logger')
 
-// logger.log("message")
+logger.log("message")
 
-// const path = require('path')
+const path = require('path')
 
-// var pathObj = path.parse(__filename)
+var pathObj = path.parse(__filename)
 
-// console.log(pathObj)
+console.log(pathObj)
 
 
-// // Opearting System Data Fetch
-// const os = require('os')
-// var totalmemory = os.totalmem()
-// var freememory = os.freemem()
-// console.log(totalmemory)
-// console.log(freememory)
-// console.log(`Total Memory: ${os.totalmem}`)
+// Opearting System Data Fetch
+const os = require('os')
+var totalmemory = os.totalmem()
+var freememory = os.freemem()
+console.log(totalmemory)
+console.log(freememory)
+console.log(`Total Memory: ${os.totalmem}`)
 
-// // Read the files in the folder 
-// const fs = require('fs')
+// Read the files in the folder 
+const fs = require('fs')
 
-// // const files =  fs.readdirSync('./');
+// const files =  fs.readdirSync('./');
 
-// // console.log(files)
+// console.log(files)
 
-// // current directory files 
+// current directory files 
 
-// fs.readdir('./',function(err,files){
-//     if(err) console.log("Error",err)
-//     else console.log("result",files)
-// })
+fs.readdir('./',function(err,files){
+    if(err) console.log("Error",err)
+    else console.log("result",files)
+})
 
-// //Events 
-// // This is an class, so it can tell which it do
-// const EventEmitter = require('events')
-// // this is an object, the actual istance 
-// const emitter = new EventEmitter()
-// //Register a listener
-// emitter.on('messageLogged',function(arg){
-//     console.log('listener Called',arg)
-// })
-// // // Raise Event
-// // emitter.emit('messageLogged')
-// // Emitter with some arguments
-// emitter.emit('messageLogged', {id : 1, url:'http:..'})
+//Events 
+// This is an class, so it can tell which it do
+const EventEmitter = require('events')
+// this is an object, the actual istance 
+const emitter = new EventEmitter()
+//Register a listener
+emitter.on('messageLogged',function(arg){
+    console.log('listener Called',arg)
+})
+// // Raise Event
+// emitter.emit('messageLogged')
+// Emitter with some arguments
+emitter.emit('messageLogged', {id : 1, url:'http:..'})
 
 //http 
 const { Socket } = require('dgram');
