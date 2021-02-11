@@ -1,6 +1,5 @@
 // Using Joy for input Validation
-const joi = require('joi');
-
+const Joi = require('joi');
 const express = require('express');
 const app = express();
 const teammembers = [
@@ -58,6 +57,17 @@ app.get('/api/androidteams/',(req,res)=>{
 // POST req , get a name and add it to database
 
 app.post('/api/androidteams',(req,res)=>{
+    // const schema = {
+    //     name: Joi.string().min(3).required()
+    // };
+    // const result = schema.validate(req.body);
+    // Validate Using JOI , Checking the name has 3 characters or Not ...
+    const schema = Joi.object({ 
+        name: Joi.string().min(3).required()
+    })
+    const Validation = schema.validate(req.body);
+    console.log(Validation);
+    
     if(!req.body.name || req.body.name.length <2){{
         // 400 Bad Request
         res.status(400).send('Name is Required and Should be minimum 3 Characters!');
@@ -72,7 +82,7 @@ app.post('/api/androidteams',(req,res)=>{
     res.send(teammembers)
 });
 
-
+// Updating value by using PUT
 const port = process.env.port ||3000;
 app.listen(3000,function(){
     console.log(`Server run success ${port}`);
