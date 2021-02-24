@@ -8,7 +8,7 @@ const teammembers = [
     {id:3,name:'Emon'}
 
 ]
-
+var arraysss= [1,2,11]
 //
 // exporting json, 
  app.use (express.json());
@@ -31,7 +31,11 @@ app.get('/api/courses/:id',(req,res) =>{
     res.send(req.params.id)
 })
 
-
+app.get('/api',(req,res)=>{
+    var msg = "main array"+ arraysss
+    arraysss.sort
+    res.send(arraysss)
+})
 // api get req and send the given year and month
 app.get('/api/posts/:year/:month',(req,res)=>{
     var details = "my name is emon"
@@ -82,8 +86,10 @@ app.post('/api/androidteams',(req,res)=>{
     res.send(teammembers)
 });
 
-// Updating value by using PUT
+
 const port = process.env.port ||3000;
 app.listen(3000,function(){
     console.log(`Server run success ${port}`);
 });
+
+

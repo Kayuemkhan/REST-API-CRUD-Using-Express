@@ -7,3 +7,6 @@ if(aa !=null && bb!=null){
     console.log("Multiplication Of two numbers "+(aa*bb))
     console.log("Division Of two numbers "+(aa/bb))
 }
+
+let array= [1,2,11]
+console.log(array.sort)
