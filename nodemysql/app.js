@@ -21,6 +21,10 @@ db.connect((err) =>{
 
 const app = express();
 
+
+// Creating Database
+
+
 app.get('/createdb', (req,res)=>{
     let sql = "CREATE DATABASE nodemysql"
     db.query(sql,(err,result)=>{
@@ -60,8 +64,7 @@ app.get('/getallposts',(req,res) =>{
     let sql = 'SELECT * FROM posts ' ;
     let query = db.query(sql,posts,(err,result) =>{
         if(err) throw err
-        console.log(result)
-        res.json({ status: 200 , message: "post is successfully inserted ${req.params.id}" , data:result})
+        res.json({ status: 200 , message: "All posts" , data:result})
         
     })
 })
@@ -74,6 +77,29 @@ app.get('/getpost/:id',(req,res)=>{
         res.json({ status: 200  , data:result})
     })
 })
+
+// Update post
+app.get('/updatepost/:id', (req, res) => {
+    let newTitle = 'Updated Title';
+    let sql = `UPDATE posts SET title = '${newTitle}' WHERE id = ${req.params.id}`;
+    let query = db.query(sql, (err, result) => {
+        if(err) throw err;
+        console.log(result);
+        res.status(200).json({status:200,data:result, message:'Post updated...'});
+    });
+});
+
+// Delete post
+app.get('/deletepost/:id', (req, res) => {
+    let newTitle = 'Updated Title';
+    let sql = `DELETE FROM posts WHERE id = ${req.params.id}`;
+    let query = db.query(sql, (err, result) => {
+        if(err) throw err;
+        console.log(result);
+        res.send('Post deleted...');
+    });
+});
+
 
 app.listen('3000', ()=>{
     console.log("Server Started on port 3000");
